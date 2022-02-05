@@ -25,10 +25,10 @@ function onFormInputGet() {
     const savedElements = JSON.parse(localStorage.getItem(STORAGE_KEY));
     
     if (savedElements) {
-        console.log(savedElements);
-        savedElements === formData.value;
-        // savedElements === message.value;
-    }   
+        message.value = savedElements;
+        email.value = savedElements;
+    } 
+       console.log(savedElements);
 }
 function onFormSubmit(evt) {
     evt.preventDefault();
