@@ -10,17 +10,16 @@ const formData = {
     email: email.value,
 };
 
-// email.addEventListener('input', throttle(onFormInputSet, 500));
-// message.addEventListener('input', throttle(onFormInputSet, 500));
 form.addEventListener('submit', onFormSubmit);
-
-form.addEventListener('input', evt => {
-    formData[evt.target.name] = evt.target.value;  
-    console.log(formData);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-});
+form.addEventListener('input', throttle(onFormInputSet, 500));
 
 onFormInputGet();
+
+function onFormInputSet(evt) {
+    formData[evt.target.name] = evt.target.value;
+    console.log(formData);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+};
 
 function onFormInputGet() {
     const savedElements = JSON.parse(localStorage.getItem(STORAGE_KEY));
